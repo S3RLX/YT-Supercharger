@@ -1,0 +1,161 @@
+/* ───────── Mode bersih ───────── */
+html.ytsc-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.ytsc-hide-shorts ytd-reel-shelf-renderer,
+html.ytsc-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.ytsc-hide-shorts ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html.ytsc-hide-shorts ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html.ytsc-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+html.ytsc-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html.ytsc-hide-shorts ytd-compact-video-renderer:has(a[href^="/shorts/"]),
+html.ytsc-hide-shorts yt-lockup-view-model:has(a[href^="/shorts/"]),
+html.ytsc-hide-shorts ytm-shorts-lockup-view-model,
+html.ytsc-hide-shorts ytm-shorts-lockup-view-model-v2,
+html.ytsc-hide-shorts yt-tab-shape[tab-title="Shorts"] {
+  display: none !important;
+}
+html.ytsc-hide-comments ytd-comments#comments,
+html.ytsc-hide-comments #comments {
+  display: none !important;
+}
+html.ytsc-hide-recs ytd-watch-flexy #related,
+html.ytsc-hide-recs ytd-watch-next-secondary-results-renderer {
+  display: none !important;
+}
+html.ytsc-hide-endcards .ytp-ce-element,
+html.ytsc-hide-endcards .ytp-endscreen-content,
+html.ytsc-hide-endcards .ytp-endscreen-previous,
+html.ytsc-hide-endcards .ytp-endscreen-next,
+html.ytsc-hide-endcards .videowall-endscreen {
+  display: none !important;
+}
+html.ytsc-hide-btn #ytsc-btn { display: none !important; }
+
+/* ───────── Mode bioskop ───────── */
+#ytsc-cinema {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 1990;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+html.ytsc-cinema-on.ytsc-watch #ytsc-cinema { display: block; }
+html.ytsc-cinema-on.ytsc-watch ytd-watch-flexy #player,
+html.ytsc-cinema-on.ytsc-watch ytd-watch-flexy #player-theater-container {
+  position: relative;
+  z-index: 2000;
+}
+
+/* ───────── Tombol di pemutar ───────── */
+#ytsc-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  opacity: .9;
+}
+#ytsc-btn:hover { opacity: 1; }
+#ytsc-btn svg { fill: #fff; transition: fill .15s, transform .15s; }
+#ytsc-btn.on svg { fill: #ffd600; }
+#ytsc-btn:hover svg { transform: scale(1.12); }
+
+/* ───────── Toast ───────── */
+#ytsc-toast {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .78);
+  color: #fff;
+  font: 600 15px/1.2 Roboto, Arial, sans-serif;
+  z-index: 2100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+#ytsc-toast.show { opacity: 1; }
+
+/* ───────── Penanda progress bar ───────── */
+#ytsc-markers { position: absolute; inset: 0; pointer-events: none; z-index: 40; }
+.ytsc-range { position: absolute; top: 0; bottom: 0; background: rgba(255, 214, 0, .6); }
+.ytsc-pin { position: absolute; top: -2px; bottom: -2px; width: 3px; background: #ffd600; border-radius: 2px; }
+.ytsc-tick { position: absolute; top: -3px; bottom: -3px; width: 3px; margin-left: -1px; background: #4cc9f0; border-radius: 2px; }
+
+/* ───────── Panel ───────── */
+#ytsc-panel {
+  display: none;
+  position: absolute;
+  right: 12px;
+  bottom: 64px;
+  width: 330px;
+  max-height: calc(100% - 90px);
+  overflow-y: auto;
+  z-index: 2000;
+  background: rgba(17, 17, 22, .96);
+  color: #f1f1f1;
+  border: 1px solid rgba(255, 255, 255, .09);
+  border-radius: 14px;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, .65);
+  font: 13px/1.4 Roboto, Arial, sans-serif;
+  backdrop-filter: blur(14px);
+  text-align: left;
+  cursor: default;
+}
+#ytsc-panel.open { display: block; }
+#ytsc-panel * { box-sizing: border-box; }
+#ytsc-panel .head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  position: sticky; top: 0; background: inherit; z-index: 2;
+}
+#ytsc-panel .close { background: none; border: 0; color: #aaa; font-size: 22px; cursor: pointer; line-height: 1; }
+#ytsc-panel .close:hover { color: #fff; }
+#ytsc-panel .tabs { display: flex; gap: 2px; padding: 6px 8px 0; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+#ytsc-panel .tab {
+  flex: 1; padding: 7px 2px; background: none; border: 0; color: #aaa; cursor: pointer;
+  font-size: 11.5px; border-bottom: 2px solid transparent; white-space: nowrap;
+}
+#ytsc-panel .tab:hover { color: #fff; }
+#ytsc-panel .tab.on { color: #ffd600; border-bottom-color: #ffd600; }
+#ytsc-panel .body { padding: 10px 14px 14px; }
+#ytsc-panel .sec { margin-bottom: 14px; }
+#ytsc-panel h4 { margin: 0 0 7px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #8d8d99; font-weight: 600; }
+#ytsc-panel .speedtop { display: flex; align-items: center; gap: 10px; }
+#ytsc-panel .big { font-size: 26px; font-weight: 700; min-width: 74px; color: #ffd600; }
+#ytsc-panel .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+#ytsc-panel .chip, #ytsc-panel .btn {
+  background: rgba(255, 255, 255, .09); color: #eee; border: 0; border-radius: 8px;
+  padding: 6px 10px; font-size: 12px; cursor: pointer; transition: background .12s;
+}
+#ytsc-panel .chip:hover, #ytsc-panel .btn:hover { background: rgba(255, 255, 255, .18); }
+#ytsc-panel .btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+#ytsc-panel .hint { color: #8d8d99; font-size: 11.5px; margin-top: 6px; }
+#ytsc-panel .row { display: grid; grid-template-columns: 78px 1fr 46px; align-items: center; gap: 8px; margin: 5px 0; }
+#ytsc-panel .row .l { color: #cfcfd8; }
+#ytsc-panel .row .v { text-align: right; color: #ffd600; font-variant-numeric: tabular-nums; }
+#ytsc-panel input[type=range] { width: 100%; accent-color: #ffd600; cursor: pointer; margin: 0; }
+#ytsc-panel .chk { display: flex; align-items: center; gap: 8px; margin: 6px 0; cursor: pointer; }
+#ytsc-panel .chk input { accent-color: #ffd600; width: 15px; height: 15px; margin: 0; }
+#ytsc-panel .inline { display: flex; align-items: center; gap: 8px; }
+#ytsc-panel select, #ytsc-panel .txt {
+  background: rgba(255, 255, 255, .09); color: #fff; border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px; padding: 6px 8px; font-size: 12.5px; outline: none; flex: 1; min-width: 0;
+}
+#ytsc-panel select option { background: #222; color: #fff; }
+#ytsc-panel .txt:focus, #ytsc-panel select:focus { border-color: #ffd600; }
+#ytsc-panel .notes { margin: 10px 0; max-height: 190px; overflow-y: auto; }
+#ytsc-panel .note { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+#ytsc-panel .note .ts {
+  background: rgba(76, 201, 240, .15); color: #4cc9f0; border: 0; border-radius: 6px;
+  padding: 2px 7px; cursor: pointer; font-variant-numeric: tabular-nums; font-size: 12px;
+}
+#ytsc-panel .note .ts:hover { background: rgba(76, 201, 240, .3); }
+#ytsc-panel .note .tx { flex: 1; word-break: break-word; }
+#ytsc-panel .note .x { background: none; border: 0; color: #777; cursor: pointer; font-size: 16px; line-height: 1; }
+#ytsc-panel .note .x:hover { color: #ff5c5c; }
+#ytsc-panel .empty { color: #8d8d99; padding: 10px 0; }

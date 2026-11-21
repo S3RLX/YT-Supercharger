@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <div>
+      <h1>YT Supercharger</h1>
+      <p>Kontrol lanjutan untuk YouTube</p>
+    </div>
+  </header>
+
+  <section class="actions">
+    <button id="openPanel">⚡ Buka panel di video</button>
+    <button id="shot">📷 Screenshot</button>
+  </section>
+  <div id="msg" class="msg"></div>
+
+  <section>
+    <h2>Statistik tontonan</h2>
+    <div class="statrow">
+      <div><span id="stToday">0m</span><small>ditonton hari ini</small></div>
+      <div><span id="stSaved">0m</span><small>waktu dihemat (kecepatan)</small></div>
+    </div>
+    <div id="chart" class="chart"></div>
+  </section>
+
+  <section id="opts"></section>
+
+  <section>
+    <button id="export" class="ghost">⬇ Ekspor semua catatan (.md)</button>
+  </section>
+
+  <footer>Pintasan: <kbd>[</kbd> <kbd>]</kbd> kecepatan · <kbd>\</kbd> reset · <kbd>Alt</kbd>+<kbd>1/2/3</kbd> loop · <kbd>Alt</kbd>+<kbd>S</kbd> screenshot · <kbd>Alt</kbd>+<kbd>N</kbd> catatan · <kbd>Alt</kbd>+<kbd>P</kbd> panel</footer>
+
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
